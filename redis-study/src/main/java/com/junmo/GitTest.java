@@ -1,5 +1,7 @@
 package com.junmo;
 
 public class GitTest {
-    private String lala;
+    public void lala(){
+
+    }
 }
