@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head>
+    <title>用户列表</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+</head>
+<body>
+<div class="container">
+    <div class="row clearfix">
+        <div class="col-md-12 column">
+            <div class="page-header">
+                <h1>
+                    <small>用户列表 —— 显示所有用户</small>
+                </h1>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <a href="${pageContext.request.contextPath}/user/goadduser">新增</a>
+    </div>
+    <div>
+        <table>
+            <thead>
+            <tr>
+                <th>用户名字</th>
+                <th>用户密码</th>
+                <th>用户年龄</th>
+                <th>用户性别</th>
+                <th>用户国籍</th>
+                <th>操 作</th>
+            </tr>
+            </thead>
+            <tbody>
+            <span th:each="user:${list}">
+                <tr>
+                    <td th:text="${user.username}"></td>
+                    <td th:text="${user.password}"></td>
+                    <td th:text="${user.age}"></td>
+                    <td th:text="${user.sex}"></td>
+                    <td th:text="${user.nationality}"></td>
+                    <td>
+                        <!--                            <a href="${pageContext.request.contextPath}/user/goupdateuser/${user.getId()}">更改</a> |-->
+                        <!--                            <a href="${pageContext.request.contextPath}/user/delete/${user.getId()}">删除</a>-->
+                        <a href="">更改</a> |
+                        <a href="">删除</a>
+                    </td>
+                </tr>
+            </span>
+            </tbody>
+        </table>
+        <p>一共<span th:text="${page.pages}"/>页</p>
+        <span>当前页</span><span th:text="${page.prePage}"></span><br/>
+        <a th:href="@{/user/select(pageNumber=1,pageSize=5)}">第一页</a>
+        <a th:if="${page.hasPreviousPage} == true" th:href="@{/user/select(pageNumber=${page.getPrePage},pageSize=5)}"  >上一页</a>
+        <a th:if="${page.hasNextPage} == true" th:href="@{/user/select(pageNumber=${page.getNextPage},pageSize=5)}" >下一页</a>
+        <a th:href="@{/user/select(pageNumber=${page.pages},pageSize=5)}">最后页</a>
+
+    </div>
+</div>

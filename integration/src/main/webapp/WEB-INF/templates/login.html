@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>登陆页面</title>
+    <script src="/js/jquery-3.5.1.min.js"></script>
+    <!-- author xjt -->
+</head>
+<script>
+    // $(function () {
+    //     $("#submit1").click(function () {
+    //         var name = $("#name").val();
+    //         var password = $("#password").val();
+    //         var param = {name: name, password: password}
+    //         $.ajax({
+    //             url: "/login",
+    //             contentType: "application/json;charset=UTF-8",
+    //             data: JSON.stringify(param),
+    //             // dataType: "json",
+    //             type: "post",
+    //             success: function (code) {
+    //                 if(code==='200'){
+    //                     window.location.href="/home";
+    //                 }else {
+    //                     $("#span1").html("请输入正确的账号密码");
+    //                 }
+    //
+    //             },
+    //             error: function (XMLHttpRequest, textStatus, errorThrown) {
+    //
+    //             }
+    //         });
+    //     });
+    // });
+</script>
+<body>
+<div class="login">
+    <form th:action="@{/user/login}" method="post">
+        <h2>欢迎来到理想乌托邦,请登录</h2>
+        <div class="login_form">
+            <span>账号：</span>
+            <input type="text" placeholder="请输入账号" name="name" id="name">
+            <br>
+            <span>密码：</span>
+            <input type="password" placeholder="请输入密码" name="password" id="password">
+        </div>
+        <div class="btn">
+            <button type="submit" class="login_btn" id="submit1">登 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;录</button>
+        </div>
+        <span id="span1" th:text="${msg}"></span>
+    </form>
+</div>
+</body>
+<style>
+    body {
+        padding: 0;
+        margin: 0;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        background-image: url("/image/1.jpg");
+        background-size: cover;
+        flex: 1;
+        align-items: center;
+    }
+
+    .login {
+        text-align: center;
+        margin: 0 auto;
+        width: 600px;
+        height: 520px;
+        background-color: rgba(87, 86, 86, 0.2);
+        border-radius: 25px;
+        box-shadow: 5px 2px 35px -7px #ff9a9e;
+    }
+
+    .login h2 {
+        margin-top: 40px;
+        color: aliceblue;
+        font-weight: 100;
+    }
+
+    .login_form {
+        padding: 20px;
+    }
+
+    .login_form input {
+        background-color: transparent;
+        width: 320px;
+        padding: 2px;
+        text-indent: 2px;
+        color: white;
+        font-size: 20px;
+        height: 45px;
+        margin: 30px 30px 30px 5px;
+        outline: none;
+        border: 0;
+        border-bottom: 1px solid rgb(131, 220, 255);
+    }
+
+    input::placeholder {
+        color: #fbc2eb;
+        font-weight: 100;
+        font-size: 18px;
+        font-style: italic;
+    }
+
+    .login_btn {
+        background-color: rgba(255, 255, 255, 0.582);
+        border: 1px solid rgb(190, 225, 255);
+        padding: 10px;
+        width: 240px;
+        height: 60px;
+        border-radius: 30px;
+        font-size: 30px;
+        color: rgb(100, 183, 255);
+        font-weight: 100;
+        margin-top: 15px;
+    }
+
+    .login_btn:hover {
+        box-shadow: 2px 2px 15px 2px rgb(190, 225, 255);
+        background-color: transparent;
+        color: white;
+        /* 选择动画 */
+        animation: login_mation 0.5s;
+    }
+
+    #span1 {
+        color: red;
+    }
+
+    /* 定义动画 */
+    @keyframes login_mation {
+        from {
+            background-color: rgba(255, 255, 255, 0.582);
+            box-shadow: 0px 0px 15px 2px rgb(190, 225, 255);
+        }
+        to {
+            background-color: transparent;
+            color: white;
+            box-shadow: 2px 2px 15px 2px rgb(190, 225, 255);
+        }
+    }
+</style>
+
+</html>
+
